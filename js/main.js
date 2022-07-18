@@ -11,23 +11,27 @@ servicios.forEach((item) => {
 
 let cantidadMax = 12;
 const personas = [];
+let cantidad 
 
-let cantidad = Number(prompt("Cuantas personas van a hospedarse?"))
-if (cantidad >= cantidadMax) {
-    alert("La capacidad maxima es de " + cantidadMax + " personas.")
-} else {    
-    while (personas.length < cantidad) {
-        class Persona {
-            constructor(nombre, apellido, edad) {
-                this.nombre = nombre;
-                this.apellido = apellido;
-                this.edad = edad;
-            }
-        }
-        personas.push(new Persona(prompt("Ingrese nombre"), prompt("Ingrese apellido"), Number(prompt("Ingrese edad"))));
+do {
+    cantidad = Number(prompt("Cuantas personas van a hospedarse?"))
+    if (cantidad >= cantidadMax) {
+        alert("La capacidad maxima es de " + cantidadMax + " personas.")
     }
-    console.log(personas);
+} while (cantidad >= cantidadMax)
+
+while (personas.length < cantidad) {
+    class Persona {
+        constructor(nombre, apellido, edad) {
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.edad = edad;
+        }
+    }
+    personas.push(new Persona(prompt("Ingrese nombre"), prompt("Ingrese apellido"), Number(prompt("Ingrese edad"))));
 }
+console.log(personas);
+
 
 function mostrarHuespedes() {
     let huespedes = document.getElementById('lista-huespedes');
@@ -42,8 +46,8 @@ function mostrarHuespedes() {
     </div>
     `
 
-    huespedes.innerHTML += infoPersona
-    
+        huespedes.innerHTML += infoPersona
+
     })
 }
 
